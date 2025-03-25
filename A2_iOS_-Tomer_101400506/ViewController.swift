@@ -40,6 +40,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         fetchProducts()
     }
 
+    // Function to retrive items from the data base
+    // if no items in the array add seed data
+    // reload table
     func fetchProducts() {
         self.items = try! context.fetch(Products.fetchRequest())
         if let items = items, items.isEmpty {
