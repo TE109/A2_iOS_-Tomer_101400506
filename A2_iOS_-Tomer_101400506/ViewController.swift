@@ -19,7 +19,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     
     @IBAction func descSearchPress(_ sender: Any) {
-        if let foundIndex = items?.firstIndex(where: { $0.desc == nameInput.text }) {
+        if let foundIndex = items?.firstIndex(where: { $0.desc == desInput.text }) {
                index = foundIndex
                tableView.reloadData()
            }
@@ -27,10 +27,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.dataSource = self
         tableView.delegate = self
-        
         fetchProducts()
     }
 
@@ -48,7 +46,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             ("Laptop", 999.99, "15-inch laptop with SSD", "Tech Store"),
             ("Coffee", 3.49, "Premium dark roast coffee", "Café Deluxe")
         ]
-        
         for (name, price, desc, provider) in sampleProducts {
             let newProduct = Products(context: self.context)
             newProduct.name = name
@@ -56,13 +53,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             newProduct.desc = desc
             newProduct.provider = provider
         }
-        
-        do {
-            try context.save()
-            print("Seed data added!")
-        } catch {
-            print("Failed to seed data: \(error)")
-        }
+        try! context.save()
     }
     
     @IBAction func forwardPress(_ sender: Any) {
