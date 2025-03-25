@@ -78,6 +78,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    // Button function to go to next adress if it exsists
     @IBAction func backwardPress(_ sender: Any) {
         if index > 0 {
             index -= 1
