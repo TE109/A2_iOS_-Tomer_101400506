@@ -4,13 +4,12 @@ import CoreData
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var tableView: UITableView!
-    
     @IBOutlet weak var nameInput: UITextField!
-    
     @IBOutlet weak var desInput: UITextField!
-    
     var index = 0;
     let searchController = UISearchController()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var items: [Products]?
     
     @IBAction func nameSearchPress(_ sender: Any) {
         if let foundIndex = items?.firstIndex(where: { $0.name == nameInput.text }) {
@@ -26,10 +25,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
            }
     }
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-    var items: [Products]?
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,8 +33,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         fetchProducts()
     }
-
-    
 
     func fetchProducts() {
         self.items = try! context.fetch(Products.fetchRequest())
