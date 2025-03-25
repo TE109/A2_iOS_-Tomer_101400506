@@ -30,7 +30,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
            }
     }
     
-    // 
+    // Intial load
+    // Intilizing tableView dataSource and Delegate
+    // Fetching Products
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
