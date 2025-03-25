@@ -11,13 +11,11 @@ class tablelist: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         table.delegate = self;
         table.dataSource = self;
         fetchProducts()
     }
     
-
     func fetchProducts() {
         do {
             self.items = try context.fetch(Products.fetchRequest())
@@ -33,9 +31,7 @@ class tablelist: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
         let item = self.items?[indexPath.row]
-        
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.text = """
             Name: \(item?.name ?? "")
