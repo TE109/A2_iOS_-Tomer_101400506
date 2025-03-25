@@ -70,7 +70,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         try! context.save()
     }
     
-    
+    // Button function to go to next adress if it exsists
     @IBAction func forwardPress(_ sender: Any) {
         if index < (items?.count ?? 0) - 1 {
             index += 1
