@@ -78,7 +78,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    // Button function to go to next adress if it exsists
+    // Button function to go to previous adress if it exsists
     @IBAction func backwardPress(_ sender: Any) {
         if index > 0 {
             index -= 1
@@ -86,10 +86,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    // How many rows in the table
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
+    // How to dislay the cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
@@ -101,8 +103,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             Description: \(firstItem.desc ?? "")
             Provider: \(firstItem.provider ?? "")
             """
-        } else {
-            
         }
         
         return cell
