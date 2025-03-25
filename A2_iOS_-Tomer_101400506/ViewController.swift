@@ -12,7 +12,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     @IBOutlet var tableView: UITableView!
     
+    @IBOutlet weak var nameInput: UITextField!
+    
+    @IBOutlet weak var desInput: UITextField!
+    
     var index = 0;
+    let searchController = UISearchController()
+    
+    @IBAction func nameSearchPress(_ sender: Any) {
+        if let foundIndex = items?.firstIndex(where: { $0.name == nameInput.text }) {
+               index = foundIndex
+               tableView.reloadData()
+           }
+        }
+    
+    @IBAction func descSearchPress(_ sender: Any) {
+        if let foundIndex = items?.firstIndex(where: { $0.desc == nameInput.text }) {
+               index = foundIndex
+               tableView.reloadData()
+           }
+    }
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -27,12 +46,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         fetchProducts()
     }
 
+    
+
     func fetchProducts() {
         do {
             self.items = try context.fetch(Products.fetchRequest())
             tableView.reloadData()
         } catch {
-            print("Failed to fetch products: \(error)")
+            
         }
     }
 
@@ -67,7 +88,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             Provider: \(firstItem.provider ?? "")
             """
         } else {
-            cell.textLabel?.text = "No Data Available"
+            
         }
         
         return cell
@@ -97,7 +118,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 try self.context.save()
                 self.fetchProducts()
             } catch {
-                print("Failed to save product: \(error)")
+                
             }
         }
         
