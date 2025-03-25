@@ -43,13 +43,38 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     func fetchProducts() {
         do {
-            self.items = try context.fetch(Products.fetchRequest())
+            self.items = try context.fetch(Products.fetchRequest())            
+            if let items = items, items.isEmpty {
+                seedProducts()
+            }
             tableView.reloadData()
         } catch {
             
         }
     }
 
+    func seedProducts() {
+        let sampleProducts = [
+            ("Apple", 1.99, "Fresh red apple", "Fruit Vendor"),
+            ("Laptop", 999.99, "15-inch laptop with SSD", "Tech Store"),
+            ("Coffee", 3.49, "Premium dark roast coffee", "Café Deluxe")
+        ]
+        
+        for (name, price, desc, provider) in sampleProducts {
+            let newProduct = Products(context: self.context)
+            newProduct.name = name
+            newProduct.price = price
+            newProduct.desc = desc
+            newProduct.provider = provider
+        }
+        
+        do {
+            try context.save()
+            print("Seed data added!")
+        } catch {
+            print("Failed to seed data: \(error)")
+        }
+    }
     
     @IBAction func forwardPress(_ sender: Any) {
         if index < (items?.count ?? 0) - 1 {
