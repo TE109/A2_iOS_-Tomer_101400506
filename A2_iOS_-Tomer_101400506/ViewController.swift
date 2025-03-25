@@ -42,15 +42,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
 
     func fetchProducts() {
-        do {
-            self.items = try context.fetch(Products.fetchRequest())            
-            if let items = items, items.isEmpty {
-                seedProducts()
-            }
-            tableView.reloadData()
-        } catch {
-            
+        self.items = try! context.fetch(Products.fetchRequest())
+        if let items = items, items.isEmpty {
+            seedProducts()
         }
+        tableView.reloadData()
     }
 
     func seedProducts() {
