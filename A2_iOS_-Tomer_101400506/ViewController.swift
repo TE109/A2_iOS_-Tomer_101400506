@@ -51,6 +51,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.reloadData()
     }
 
+    // Function to add inital data
+    // loop over an array of products and save it to the contect
+    // save the context
     func seedProducts() {
         let sampleProducts = [
             ("Apple", 1.99, "Fresh red apple", "Fruit Vendor"),
@@ -66,6 +69,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         try! context.save()
     }
+    
     
     @IBAction func forwardPress(_ sender: Any) {
         if index < (items?.count ?? 0) - 1 {
