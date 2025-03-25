@@ -24,6 +24,18 @@
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
                                         <items>
                                             <navigationItem id="go2-xl-A0u">
+                                                <leftBarButtonItems>
+                                                    <barButtonItem title="Backwards" image="arrowshape.backward.fill" catalog="system" id="uLn-k1-EWy">
+                                                        <connections>
+                                                            <action selector="backwardPress:" destination="BYZ-38-t0r" id="jyN-OD-WDD"/>
+                                                        </connections>
+                                                    </barButtonItem>
+                                                    <barButtonItem title="Forwards" image="arrowshape.right.fill" catalog="system" id="9lv-xg-tCq">
+                                                        <connections>
+                                                            <action selector="forwardPress:" destination="BYZ-38-t0r" id="uHS-Fa-gua"/>
+                                                        </connections>
+                                                    </barButtonItem>
+                                                </leftBarButtonItems>
                                                 <barButtonItem key="rightBarButtonItem" systemItem="add" id="xdB-OM-Avp">
                                                     <connections>
                                                         <action selector="addTapped:" destination="BYZ-38-t0r" id="jMz-VZ-38N"/>
@@ -63,6 +75,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrowshape.backward.fill" catalog="system" width="128" height="104"/>
+        <image name="arrowshape.right.fill" catalog="system" width="128" height="104"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
