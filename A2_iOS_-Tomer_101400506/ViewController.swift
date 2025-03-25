@@ -11,6 +11,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var items: [Products]?
     
+    // Button Press Function
+    
     @IBAction func nameSearchPress(_ sender: Any) {
         if let foundIndex = items?.firstIndex(where: { $0.name == nameInput.text }) {
                index = foundIndex
