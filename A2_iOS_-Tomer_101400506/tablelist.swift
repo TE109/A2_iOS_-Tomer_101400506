@@ -4,7 +4,6 @@ import CoreData
 class tablelist: UIViewController, UITableViewDataSource, UITableViewDelegate {
    
     @IBOutlet var table: UITableView!
-    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var items: [Products]?
@@ -17,12 +16,8 @@ class tablelist: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func fetchProducts() {
-        do {
-            self.items = try context.fetch(Products.fetchRequest())
-            table.reloadData()
-        } catch {
-            
-        }
+        self.items = try! context.fetch(Products.fetchRequest())
+        table.reloadData()
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
