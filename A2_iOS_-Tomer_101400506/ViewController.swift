@@ -12,7 +12,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var items: [Products]?
     
     // Button Press Function
-    
+    // Looks for the first index that is equal to the value of name input
+    // sets the Current displaying index as the returned index
+    // Reloads the table
     @IBAction func nameSearchPress(_ sender: Any) {
         if let foundIndex = items?.firstIndex(where: { $0.name == nameInput.text }) {
                index = foundIndex
